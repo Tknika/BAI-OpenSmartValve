@@ -9,11 +9,11 @@
 
 
 volatile int count = 0; // Global variable for any kind of function
-int state = 5; // It saves first state of the valve, if the valve was close manteining it close and if it was open mantining it open
+int state = 5; // It saves the first state of the valve, if the valve was closed it will maintain closed and if it was open mantining it open
 int valveLengthPulses = 0; // This variable defines the quantity of pulses (it is declared as a global variable)
 
 int order = 0; // 0 = valve closed = radiator OFF ; 1 = valve opened = radiator ON (it is declared as a global variable)
-int sleepTime = 10; // Time in minutes that is going to be OFF the actuator
+int sleepTime = 10; // Time that is going to be OFF the actuator
 
 const int light = 12;
 const int sensor = 14; // Ultrasound sensor pin definition (interrupt=1 --> digital pin=1 --> pin=21)
@@ -32,7 +32,7 @@ void setup() {
     pinMode(motorBlackWire, OUTPUT);
 
     digitalWrite(light, HIGH);    
-	  attachInterrupt(sensor, counter, RISING); // Definition of a interruption that will be activated by 'sensor' pin, 'RISING' executes motorService function
+	  attachInterrupt(sensor, counter, RISING); // Definition of an interruption that will be activated by 'sensor' pin, a 'RISING' flag executes motorService function
 
     valveLengthPulses = valveRegulation();
    
